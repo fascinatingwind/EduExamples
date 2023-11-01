@@ -6,10 +6,7 @@ namespace IO
 	class InputInterface
 	{
 		public:
-			InputInterface() = default;
-			virtual ~InputInterface() = default;
-
-			virtual std::string name() const  = 0;
+			virtual std::string name() const = 0;
 			virtual void makeAction() const = 0;
 	};
 
