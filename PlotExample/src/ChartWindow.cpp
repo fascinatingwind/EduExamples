@@ -92,17 +92,21 @@ namespace Chart
 
   void ChartWindow::Start()
   {
+    m_run = false;
+    if (m_background.joinable())
+      m_background.join();
     m_run = true;
     m_pause = false;
     m_background = std::jthread([&]()
       {
         while (m_run)
         {
-          if (!m_pause)
+          if(!m_pause)
           {
+            std::unique_lock guard(m_mutex);
             m_model->setModelData(GenerateData());
-            std::this_thread::sleep_for(2s);
           }
+          std::this_thread::sleep_for(2s);
         }
       });
   }

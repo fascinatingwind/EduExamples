@@ -35,10 +35,11 @@ namespace Chart
 		QValueAxis* m_axis_y = nullptr;
 
 		QScatterSeries* m_value_series = nullptr;
+		std::mutex m_mutex;
 		std::jthread m_background;
 
-		bool m_run = false;
-		bool m_pause = true;
+		std::atomic<bool> m_run = false;
+		std::atomic<bool> m_pause = false;
 
 	private:
 		void SetupUi();
