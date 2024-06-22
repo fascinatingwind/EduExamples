@@ -92,6 +92,12 @@ namespace Chart
 
   void ChartWindow::Start()
   {
+    if (m_run && !m_pause)
+    {
+      m_pause = false;
+      return;
+    }
+
     m_run = false;
     if (m_background.joinable())
       m_background.join();
@@ -103,7 +109,7 @@ namespace Chart
         {
           if(!m_pause)
           {
-            std::unique_lock guard(m_mutex);
+            std::lock_guard guard(m_mutex);
             m_model->setModelData(GenerateData());
           }
           std::this_thread::sleep_for(2s);
