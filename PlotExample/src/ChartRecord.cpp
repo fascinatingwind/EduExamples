@@ -1,6 +1,6 @@
 #include "ChartRecord.h"
 
-namespace Strata
+namespace Chart
 {
 	ChartRecord::ChartRecord(float x, float y)
 		:m_x(x), m_y(y)

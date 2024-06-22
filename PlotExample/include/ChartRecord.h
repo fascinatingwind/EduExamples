@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Strata
+namespace Chart
 {
 	class ChartRecord
 	{

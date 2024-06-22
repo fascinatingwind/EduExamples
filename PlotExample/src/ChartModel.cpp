@@ -1,9 +1,7 @@
 #include "ChartModel.h"
 
-namespace Strata
+namespace Chart
 {
-	static size_t ColimnCount = 2;
-
 	ChartModel::ChartModel(QObject* parent) : QAbstractTableModel(parent)
 	{
 	}
@@ -15,7 +13,7 @@ namespace Strata
 
 	int ChartModel::columnCount(const QModelIndex& parent) const
 	{
-		return static_cast<int>(ColimnCount);
+		return 2;
 	}
 
 	QVariant ChartModel::data(const QModelIndex& index, int role) const
@@ -44,17 +42,17 @@ namespace Strata
 		}
 	}
 
-	void ChartModel::append(const ChartRecord& record)
+	void ChartModel::setModelData(const std::vector<ChartRecord>& data)
 	{
-		beginInsertRows(QModelIndex(), 0, 0);
-		m_data.emplace_back(record);
-		endInsertRows();
+		beginResetModel();
+		m_data = data;
+		endResetModel();
 	}
 
-	void ChartModel::append(ChartRecord&& record)
+	void ChartModel::setModelData(std::vector<ChartRecord>&& data)
 	{
-		beginInsertRows(QModelIndex(), 0, 0);
-		m_data.emplace_back(std::move(record));
-		endInsertRows();
+		beginResetModel();
+		m_data = std::move(data);
+		endResetModel();
 	}
 }

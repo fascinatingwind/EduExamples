@@ -7,39 +7,41 @@
 #include <QtCharts/qscatterseries.h>
 
 #include <thread>
+#include <mutex>
 
 #include "ChartModel.h"
+#include "ChartRecord.h"
 
 namespace Ui
 {
-	class MainWindow;
+	class ChartWindow;
 }
 
-namespace Strata
+namespace Chart
 {
-	class MainWindow : public QMainWindow
+	class ChartWindow final : public QMainWindow
 	{
 		Q_OBJECT;
 	public:
-		MainWindow(QWidget* parent = Q_NULLPTR);
-		~MainWindow();
+		explicit ChartWindow(QWidget* parent = Q_NULLPTR);
+		~ChartWindow();
 
 	private:
-		Ui::MainWindow* m_ui = nullptr;
-		ChartModelPtr m_model = nullptr;
-
-		QChart* m_chart = nullptr;
+		Ui::ChartWindow* m_ui = nullptr;
+		ChartModel* m_model = nullptr;
 
 		QVXYModelMapper* m_mapper_value = nullptr;
 		QValueAxis* m_axis_x = nullptr;
 		QValueAxis* m_axis_y = nullptr;
 
 		QScatterSeries* m_value_series = nullptr;
+		std::jthread m_background;
 
-		std::vector<ChartRecord> GenerateData() const;
+		bool m_run = false;
+		bool m_pause = true;
 
-		void DrawChart();
-
+	private:
+		void SetupUi();
 		void ConnectActions() const;
 
 		void Start();
@@ -48,11 +50,6 @@ namespace Strata
 
 		void closeEvent(QCloseEvent*);
 
-		void Wait();
-
-		std::thread m_background;
-
-	signals:
-		void Draw();
+		std::vector<ChartRecord> GenerateData() const;
 	};
 }

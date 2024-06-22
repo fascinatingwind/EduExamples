@@ -4,22 +4,21 @@
 
 #include "ChartRecord.h"
 
-namespace Strata
+namespace Chart
 {
 	class ChartModel final : public QAbstractTableModel
 	{
 	public:
-		ChartModel(QObject* parent = nullptr);
+		explicit ChartModel(QObject* parent = nullptr);
 
 		int rowCount(const QModelIndex& parent = QModelIndex()) const override;
 		int columnCount(const QModelIndex& parent = QModelIndex()) const override;
 
 		QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
-		void append(const ChartRecord& record);
-		void append(ChartRecord&& record);
+		void setModelData(const std::vector<ChartRecord>& data);
+		void setModelData(std::vector<ChartRecord>&& data);
 
 	private:
 		std::vector<ChartRecord> m_data;
 	};
-	using ChartModelPtr = std::shared_ptr<ChartModel>;
 }
