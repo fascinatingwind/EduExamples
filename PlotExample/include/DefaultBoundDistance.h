@@ -15,29 +15,20 @@ public:
     QPointF result{ 0, 0 };
     if (bounds.contains(target))
       return result;
+    result = target - bounds.center();
     if (target.x() < bounds.right() && target.x() > bounds.left())
     {
-      // remember display coord
-      // --> x
-      // |
-      // |
-      // v
-      // y
       if (target.y() > bounds.top() || target.y() < bounds.bottom())
       {
-        result.setY(target.y() - bounds.center().y());
+        result.setX(0);
       }
     }
     else if (target.y() > bounds.top() && target.y() < bounds.bottom())
     {
       if (target.x() > bounds.right() || target.x() < bounds.left())
       {
-        result.setX(target.x() - bounds.center().x());
+        result.setY(0);
       }
-    }
-    else
-    {
-      result = target - bounds.center();
     }
     return result;
   }
