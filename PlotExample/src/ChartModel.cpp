@@ -34,22 +34,22 @@ namespace Chart
 		switch (column)
 		{
 		case 0:
-			return item.GetX();
+			return item.x();
 		case 1:
-			return item.GetY();
+			return item.y();
 		default:
 			return QVariant();
 		}
 	}
 
-	void ChartModel::setModelData(const std::vector<ChartRecord>& data)
+	void ChartModel::setModelData(const std::vector<QPointF>& data)
 	{
 		beginResetModel();
 		m_data = data;
 		endResetModel();
 	}
 
-	void ChartModel::setModelData(std::vector<ChartRecord>&& data)
+	void ChartModel::setModelData(std::vector<QPointF>&& data)
 	{
 		beginResetModel();
 		m_data = std::move(data);

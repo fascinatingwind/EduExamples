@@ -12,13 +12,14 @@ set(CMAKE_AUTOUIC_SEARCH_PATHS "ui")
 
 set(HEADER_FILES ${HEADER_FILES}
 		"include/ChartModel.h"
-		"include/ChartRecord.h"
 		"include/ChartWindow.h"
+		"include/BoundDistanceInterface.h"
+		"include/DefaultBoundDistance.h"
+		"include/ExperimentalBoundDistance.h"
 )
 
 set(SOURCE_FILES ${SOURCE_FILES}
 		"src/ChartModel.cpp"
-		"src/ChartRecord.cpp"
 		"src/ChartWindow.cpp"
 		"main.cpp"
 )

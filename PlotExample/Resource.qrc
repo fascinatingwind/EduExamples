@@ -3,5 +3,6 @@
         <file alias="play">resources/control.png</file>
         <file alias="pause">resources/control-pause.png</file>
         <file alias="stop">resources/control-stop-square.png</file>
+        <file alias="resize">resources/application-resize-full.png</file>
     </qresource>
 </RCC>

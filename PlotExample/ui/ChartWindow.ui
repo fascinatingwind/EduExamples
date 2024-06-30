@@ -39,8 +39,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>:/play</normaloff>:/play
-         </iconset>
+          <normaloff>:/play</normaloff>:/play</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -69,8 +68,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>:/pause</normaloff>:/pause
-         </iconset>
+          <normaloff>:/pause</normaloff>:/pause</iconset>
         </property>
        </widget>
       </item>
@@ -99,10 +97,26 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>:/stop</normaloff>
-           :/stop
-         </iconset>
+          <normaloff>:/stop</normaloff>:/stop</iconset>
         </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnResize">
+        <property name="maximumSize">
+         <size>
+          <width>64</width>
+          <height>64</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Resize</string>
+        </property>
+         <property name="icon">
+           <iconset>
+             <normaloff>:/resize</normaloff>:/resize
+           </iconset>
+         </property>
        </widget>
       </item>
      </layout>
@@ -115,7 +129,7 @@
      <x>0</x>
      <y>0</y>
      <width>751</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
